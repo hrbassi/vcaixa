@@ -1,12 +1,10 @@
 {
-    /*
     "type": "postgres",
     "host": "localhost",
     "port": 5434,
     "username": "postgres",
     "password": "vcaixa",
     "database": "vcaixa",
-    */
     "entities":[
         "./src/models/*.ts"
     ],

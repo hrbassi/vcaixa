@@ -5,6 +5,14 @@
     "username": "qiumrlceibexgg",
     "password": "64ae98518b566a86b54ed1ea7532e43941fe5ce72d6b38d0161e78ae3e50bd66",
     "database": "d58qc19gfflvan",
+    "ssl": true,
+    "extra": {
+
+        "ssl": {
+            "rejectUnauthorized": false
+        }
+    },
+
     "entities":[
         "./src/models/*.ts"
     ],
