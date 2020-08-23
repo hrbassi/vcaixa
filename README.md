@@ -19,11 +19,13 @@ Este projeto ainda não possui testes implementados e precisa passar por uma ref
 Para preparar o ambiente localmente, é necessário criar a seguinte imagem no dicker:
 `docker run --name vcaixa_postgres -e POSTGRES_PASSWORD=vcaixa -d postgres -p 5434:5432`
 
-Para executar a aplicação em abiente de desenvolvimento, além de instalar as dependências, deve-se utilizar o comando abaixo:
+Para executar a aplicação em abiente de desenvolvimento, siga os passos abaixo:
+`yarn install`
 `yarn dev:server`
 
 Para gerar o build da aplicação (que vai ser levada para produção), deve-se executar o seguinte comando:
 `yarn tsc`
+O comando irá atualizar (ou gerar) o diretório `dist` que deverá ser usado para deploy da aplicação
 
 ## Deploy e Publicação
 A intenção deste projeto é ser disponibilizado na AWS utilizando containers, porém ainda não foi configurado
