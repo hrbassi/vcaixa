@@ -20,7 +20,9 @@ Para preparar o ambiente localmente, é necessário criar a seguinte imagem no d
 `docker run --name vcaixa_postgres -e POSTGRES_PASSWORD=vcaixa -d postgres -p 5434:5432`
 Obs: A configuração do Docker utilizada no desenvolvimento foi com containers Windows
 
-Para configurar o banco localmente, deve-se criar o banco conforme arquivo `ormconfig.json`
+Para configurar o banco localmente, deve-se seguir os seguintes passos:
+1. renomear o arquivo `ormconfig.json`para `ormconfig.json_PROD`
+2. renomear o arquivo `ormconfig.json_DEV`para `ormconfig.json`
 
 Para executar a aplicação em abiente de desenvolvimento, siga os passos abaixo:
 `yarn install`
