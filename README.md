@@ -18,6 +18,7 @@ Este projeto ainda não possui testes implementados e precisa passar por uma ref
 ## Configuração e Construção (Build)
 Para preparar o ambiente localmente, é necessário criar a seguinte imagem no docker:
 `docker run --name vcaixa_postgres -e POSTGRES_PASSWORD=vcaixa -d postgres -p 5434:5432`
+Obs: A configuração do Docker utilizada no desenvolvimento foi com containers Windows
 
 Para executar a aplicação em abiente de desenvolvimento, siga os passos abaixo:
 `yarn install`
