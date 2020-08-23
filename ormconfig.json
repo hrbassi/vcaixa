@@ -7,7 +7,6 @@
     "database": "d58qc19gfflvan",
     "ssl": true,
     "extra": {
-
         "ssl": {
             "rejectUnauthorized": false
         }
