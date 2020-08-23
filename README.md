@@ -21,8 +21,8 @@ Para preparar o ambiente localmente, é necessário criar a seguinte imagem no d
 Obs: A configuração do Docker utilizada no desenvolvimento foi com containers Windows
 
 Para configurar o banco localmente, deve-se seguir os seguintes passos:
-1. renomear o arquivo `ormconfig.json`para `ormconfig.json_PROD`
-2. renomear o arquivo `ormconfig.json_DEV`para `ormconfig.json`
+1. renomear o arquivo `ormconfig.json` para `ormconfig.json_PROD`
+2. renomear o arquivo `ormconfig.json_DEV` para `ormconfig.json` e criar o banco de dados conforme dados do arquivo de configuração
 
 Para executar a aplicação em abiente de desenvolvimento, siga os passos abaixo:
 `yarn install`
