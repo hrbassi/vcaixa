@@ -16,7 +16,7 @@ Para executar este projeto, é necessário ter os seguintes recursos em ambiente
 Este projeto ainda não possui testes implementados e precisa passar por uma refatoração para uma melhor distribuição de responsabilidades de cada parte da aplicação.
 
 ## Configuração e Construção (Build)
-Para preparar o ambiente localmente, é necessário criar a seguinte imagem no dicker:
+Para preparar o ambiente localmente, é necessário criar a seguinte imagem no docker:
 `docker run --name vcaixa_postgres -e POSTGRES_PASSWORD=vcaixa -d postgres -p 5434:5432`
 
 Para executar a aplicação em abiente de desenvolvimento, siga os passos abaixo:
@@ -29,3 +29,6 @@ O comando irá atualizar (ou gerar) o diretório `dist` que deverá ser usado pa
 
 ## Deploy e Publicação
 A intenção deste projeto é ser disponibilizado na AWS utilizando containers, porém ainda não foi configurado
+
+## Documentação das rotas
+[Documentação das rotas no Postman](https://documenter.getpostman.com/view/4074073/T1LVA4Mu)
