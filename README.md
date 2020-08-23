@@ -23,14 +23,13 @@ Obs: A configuração do Docker utilizada no desenvolvimento foi com containers 
 Para configurar o banco localmente, deve-se seguir os seguintes passos:
 1. renomear o arquivo `ormconfig.json` para `ormconfig.json_PROD`
 2. renomear o arquivo `ormconfig.json_DEV` para `ormconfig.json` e criar o banco de dados conforme dados do arquivo de configuração
+3. instalar as dependencias com `yarn install`
+4. rodar as migrations para criar a estutura do banco, usando o comando `yarn typeorm migration:run`
+5. Para executar a aplicação, utilizar o comando `yarn dev:server`
 
-Para executar a aplicação em abiente de desenvolvimento, siga os passos abaixo:
-`yarn install`
-`yarn dev:server`
-
-Para gerar o build da aplicação (que vai ser levada para produção), deve-se executar o seguinte comando:
+Para gerar o build da aplicação deve-se executar o seguinte comando:
 `yarn tsc`
-O comando irá atualizar (ou gerar) o diretório `dist` que deverá ser usado para deploy da aplicação
+O comando irá atualizar (ou gerar) o diretório `dist`
 
 ## Deploy e Publicação
 A intenção deste projeto é ser disponibilizado na AWS utilizando containers, porém ainda não foi configurado
