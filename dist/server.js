@@ -1,15 +1,19 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
+
 require("reflect-metadata");
-var express_1 = __importDefault(require("express"));
-var routes_1 = __importDefault(require("./routes"));
+
+var _express = _interopRequireDefault(require("express"));
+
+var _routes = _interopRequireDefault(require("./routes"));
+
 require("./database");
-var app = express_1.default();
-app.use(express_1.default.json());
-app.use(routes_1.default);
-app.listen(3333, function () {
-    console.log('server started on port 3333!');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const app = (0, _express.default)();
+app.use(_express.default.json());
+app.use(_routes.default);
+app.set('port', process.env.PORT || 3333);
+app.listen(app.get('port'), () => {
+  console.log('server started');
 });

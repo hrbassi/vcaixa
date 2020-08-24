@@ -1,14 +1,23 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = require("express");
-var transactions_routes_1 = __importDefault(require("./transactions.routes"));
-var categories_routes_1 = __importDefault(require("./categories.routes"));
-var wallets_routes_1 = __importDefault(require("./wallets.routes"));
-var routes = express_1.Router();
-routes.use('/transactions', transactions_routes_1.default);
-routes.use('/categories', categories_routes_1.default);
-routes.use('/wallets', wallets_routes_1.default);
-exports.default = routes;
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _express = require("express");
+
+var _transactions = _interopRequireDefault(require("./transactions.routes"));
+
+var _categories = _interopRequireDefault(require("./categories.routes"));
+
+var _wallets = _interopRequireDefault(require("./wallets.routes"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const routes = (0, _express.Router)();
+routes.use('/transactions', _transactions.default);
+routes.use('/categories', _categories.default);
+routes.use('/wallets', _wallets.default);
+var _default = routes;
+exports.default = _default;
