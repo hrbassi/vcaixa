@@ -37,10 +37,10 @@ O banco de dados de produção foi criado dentro do próprio Heroku e sua estrut
 
 ## Documentação das rotas
 URL base da aplicação em ambiente de produção
-´https://vcaixatecnospeed.herokuapp.com´
+`https://vcaixatecnospeed.herokuapp.com`
 
 URL base da aplicação em ambiente de produção
-´http://localhost:3333´
+`http://localhost:3333`
 
 As rotas disponíveis estão na documentação a seguir
 [Documentação das rotas no Postman](https://documenter.getpostman.com/view/4074073/T1LVA4Mu)
