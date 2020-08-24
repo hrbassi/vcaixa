@@ -28,11 +28,20 @@ Para configurar o banco localmente, deve-se seguir os seguintes passos:
 5. Para executar a aplicação, utilizar o comando `yarn dev:server`
 
 Para gerar o build da aplicação deve-se executar o seguinte comando:
-`yarn tsc`
-O comando irá atualizar (ou gerar) o diretório `dist`
+`yarn build`
+O comando irá atualizar (ou gerar) o diretório `dist` com os arquivos `.js`
 
 ## Deploy e Publicação
-A intenção deste projeto é ser disponibilizado na AWS utilizando containers, porém ainda não foi configurado
+A Aplicação está atualmente publicada no Heroku e com deploy automático a partir da branch `master`
+O banco de dados de produção foi criado dentro do próprio Heroku e sua estrutura a partir das migrations desenvolvidas na aplicação
 
 ## Documentação das rotas
+URL base da aplicação em ambiente de produção
+´https://vcaixatecnospeed.herokuapp.com´
+
+URL base da aplicação em ambiente de produção
+´http://localhost:3333´
+
+As rotas disponíveis estão na documentação a seguir
 [Documentação das rotas no Postman](https://documenter.getpostman.com/view/4074073/T1LVA4Mu)
+
