@@ -39,6 +39,7 @@ class ListWalletService {
                 wallet_id,
                 date: Between(initial_date, final_date),
             },
+            relations:['category']
         });
 
         const transactionEntries = transactions.reduce(function getEntries(
