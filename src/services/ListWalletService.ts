@@ -5,6 +5,7 @@ import WalletsRepository from '../repositories/WalletsRepository';
 import TransactionsRepository from '../repositories/TransactionsRepository';
 import Consts from '../settings/consts';
 import RoundFloatPrecision3 from '../utils/RoundFloatPrecision';
+import RoundFloatToFixed2 from '../utils/RoundFloatTofixed2';
 
 const consts = new Consts();
 
@@ -65,7 +66,7 @@ class ListWalletService {
         0);
 
         if (wallet !== undefined && wallet) {
-            wallet.balance = RoundFloatPrecision3(
+            wallet.balance = RoundFloatToFixed2(
                 transactionEntries - transactionOutputs,
             );
             wallet.transactions = transactions;

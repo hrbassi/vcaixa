@@ -6,6 +6,7 @@ import WalletsRepository from '../repositories/WalletsRepository';
 import CategoriesRepository from '../repositories/CategoriesRepository';
 import Consts from '../settings/consts';
 import RoundFloatPrecision3 from '../utils/RoundFloatPrecision';
+import RoundFloatToFixed2 from '../utils/RoundFloatTofixed2';
 
 const consts = new Consts();
 
@@ -75,7 +76,7 @@ class CreateTransactionService {
             date,
             category_id,
             type,
-            RoundFloatPrecision3(value),
+            RoundFloatToFixed2(value),
             description,
             walletId,
         );
