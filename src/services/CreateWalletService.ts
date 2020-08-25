@@ -2,22 +2,18 @@ import { getCustomRepository } from 'typeorm';
 import Wallet from '../models/Wallet';
 import WalletsRepository from '../repositories/WalletsRepository';
 
-interface Request {
-    balance: number;
-}
-
 class CreateWalletService {
-    public async execute({ balance }: Request): Promise<Wallet> {
+    public async execute(): Promise<Wallet> {
         const walletsRepository = getCustomRepository(WalletsRepository);
 
-        if (balance === Number(0) || balance === undefined) {
-            const wallet = walletsRepository.create({
-                balance: 0,
-            });
-            await walletsRepository.save(wallet);
-            return wallet;
+        const createdWallet = await walletsRepository.createWallet();
+
+        if (!createdWallet) {
+            throw new Error('Erro na criação da carteira');
         }
-        throw new Error('Balanço inicial sempre deve ser zero');
+        const wallet = createdWallet;
+
+        return wallet;
     }
 }
 

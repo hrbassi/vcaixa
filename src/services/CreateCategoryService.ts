@@ -16,25 +16,30 @@ class CreateCategoryService {
 
         const walletId = String(wallet_id);
 
-        const existsWallet = await walletsRepository.findOne({
-            where: { id: walletId },
-        });
-        if (!existsWallet) {
+        const findWallet = await walletsRepository.findOneById(walletId);
+
+        if (!findWallet) {
             throw new Error('Carteira inexistente para criação de categorias');
         }
 
-        const checkCategoryExists = await categoriesRepository.findOne({
-            where: { name },
-        });
-        if (checkCategoryExists) {
+        const checkCategoryExists = await categoriesRepository.findByWalletIdAndCategoryName(
+            walletId,
+            name,
+        );
+
+        if (checkCategoryExists.length > 0) {
             throw new Error('Categoria já cadastrada');
         }
 
-        const category = categoriesRepository.create({
+        const createdCategory = await categoriesRepository.createCategory(
+            walletId,
             name,
-            wallet_id: walletId,
-        });
-        await categoriesRepository.save(category);
+        );
+
+        if (!createdCategory) {
+            throw new Error('Erro na criação da categoria');
+        }
+        const category = createdCategory;
 
         return category;
     }

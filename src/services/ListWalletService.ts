@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { getCustomRepository, Between } from 'typeorm';
+import { getCustomRepository } from 'typeorm';
 import Wallet from '../models/Wallet';
 import WalletsRepository from '../repositories/WalletsRepository';
 import TransactionsRepository from '../repositories/TransactionsRepository';
@@ -25,22 +25,22 @@ class ListWalletService {
             TransactionsRepository,
         );
 
-        const wallet = await walletsRepository.findOne({
-            where: { id: wallet_id },
+        const walletId = String(wallet_id);
 
-            relations: ['transactions', 'transactions.category'],
-        });
-        if (!wallet) {
-            throw new Error('Carteira inexistente para listagem de categorias');
+        const findWallet = await walletsRepository.findOneById(walletId);
+
+        if (!findWallet) {
+            throw new Error(
+                'Carteira inexistente para listagem das informações',
+            );
         }
+        const wallet = findWallet;
 
-        const transactions = await transactionsRepository.find({
-            where: {
-                wallet_id,
-                date: Between(initial_date, final_date),
-            },
-            relations:['category']
-        });
+        const transactions = await transactionsRepository.findByWalletIdAndDates(
+            walletId,
+            initial_date,
+            final_date,
+        );
 
         const transactionEntries = transactions.reduce(function getEntries(
             entries,

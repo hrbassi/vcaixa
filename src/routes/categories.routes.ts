@@ -12,8 +12,8 @@ categoriesRouter.post('/', async (request, response) => {
         const createCategory = new CreateCategoryService();
 
         const category = await createCategory.execute({
-            name,
             wallet_id,
+            name,
         });
         return response.json(category);
     } catch (err) {

@@ -35,19 +35,28 @@ class CreateTransactionService {
 
         const walletId = String(wallet_id);
 
-        const existsWallet = await walletsRepository.findOne({
-            where: { id: walletId },
-        });
-        if (!existsWallet) {
+        const findWallet = await walletsRepository.findOneById(walletId);
+
+        if (!findWallet) {
             throw new Error(
                 'Carteira inexistente para lançamento de movimentações',
             );
         }
+        const existsCategory = await categoriesRepository.findByWalletId(
+            walletId,
+        );
 
-        const existsCategory = await categoriesRepository.findOne({
-            where: { id: category_id },
-        });
         if (!existsCategory) {
+            throw new Error(
+                `Categoria inexistente para lançamento de movimentações`,
+            );
+        }
+
+        const foundCategory = existsCategory.find(
+            category => category.id === category_id,
+        );
+
+        if (!foundCategory) {
             throw new Error(
                 `Categoria inexistente para lançamento de movimentações`,
             );
@@ -62,15 +71,20 @@ class CreateTransactionService {
             );
         }
 
-        const transaction = transactionsRepository.create({
+        const createdTransaction = await transactionsRepository.createTransaction(
             date,
             category_id,
             type,
-            value: RoundFloatPrecision3(value),
+            RoundFloatPrecision3(value),
             description,
-            wallet_id: walletId,
-        });
-        await transactionsRepository.save(transaction);
+            walletId,
+        );
+
+        if (!createdTransaction) {
+            throw new Error('Erro na criação da movimentação');
+        }
+
+        const transaction = createdTransaction;
 
         return transaction;
     }

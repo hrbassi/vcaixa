@@ -7,12 +7,9 @@ const walletsRouter = Router();
 
 walletsRouter.post('/', async (request, response) => {
     try {
-        const { balance } = request.body;
         const createWallet = new CreateWalletService();
 
-        const wallet = await createWallet.execute({
-            balance,
-        });
+        const wallet = await createWallet.execute();
         return response.json(wallet);
     } catch (err) {
         return response.status(400).json({ error: err.message });

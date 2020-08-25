@@ -12,15 +12,15 @@ class ListCategoryService {
     public async execute({ wallet_id }: Request): Promise<Category[]> {
         const categoriesRepository = getCustomRepository(CategoriesRepository);
         const walletsRepository = getCustomRepository(WalletsRepository);
+        const walletId = String(wallet_id);
 
-        const existsWallet = await walletsRepository.findOne({
-            where: { id: wallet_id },
-        });
-        if (!existsWallet) {
+        const findWallet = await walletsRepository.findOneById(walletId);
+
+        if (!findWallet) {
             throw new Error('Carteira inexistente para listagem de categorias');
         }
 
-        return categoriesRepository.find({ where: { wallet_id } });
+        return categoriesRepository.findByWalletId(walletId);
     }
 }
 

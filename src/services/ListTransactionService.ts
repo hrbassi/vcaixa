@@ -15,18 +15,17 @@ class ListTransactionService {
         );
         const walletsRepository = getCustomRepository(WalletsRepository);
 
-        const existsWallet = await walletsRepository.findOne({
-            where: { id: wallet_id },
-        });
-        if (!existsWallet) {
-            throw new Error('Carteira inexistente para listagem de categorias');
+        const walletId = String(wallet_id);
+
+        const findWallet = await walletsRepository.findOneById(walletId);
+
+        if (!findWallet) {
+            throw new Error(
+                'Carteira inexistente para listagem de movimentações',
+            );
         }
 
-        return transactionsRepository.find({
-            where: { wallet_id },
-            // select: ['value'],
-            relations: ['category'],
-        });
+        return transactionsRepository.findByWalletId(walletId);
     }
 }
 
